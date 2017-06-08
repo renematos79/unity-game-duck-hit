@@ -29,7 +29,6 @@ public class MovePlayerDuck : MonoBehaviour {
 	public float Speed = 2.5f;
 	public AudioClip CarExplosion;
 	public AudioClip GameOverSound;
-	public Camera GameCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -176,23 +175,31 @@ public class MovePlayerDuck : MonoBehaviour {
 				AudioManager.Instance.PlayClip (this.CarExplosion);	
 				var moveCar = other.gameObject.GetComponent<MoveCar> ();
 				moveCar.CarDirection = MoveCar.MoveCarDirection.None;
+
+				// muda o status do jogador para morto
+				ChangeState (PlayerAnimationState.Death);
+
+				// para a criacao de carros
+				var scriptCreateCar = Camera.main.GetComponent<CreateCar> ();
+				scriptCreateCar.enabled = false;
+				scriptCreateCar.StopCreateCar = true;
 					
-				Delay( 3, () => {
+				Delay(3, () => {
+					// destroi o carro
 					DestroyObject (other.gameObject);
+
+
+					// play sound game over
+					if (this.GameOverSound != null) {
+						AudioManager.Instance.PlayClip (this.GameOverSound);
+						this.GameOverSound = null;
+					}
+
+					// desliga a visao game
+					Camera.main.cullingMask = 1 << LayerMask.NameToLayer("Nothing");
+					Camera.main.cullingMask = 1 << LayerMask.NameToLayer("UI");
 				} );
-
 			}
-
-			if (this.GameOverSound != null) {
-				AudioManager.Instance.PlayClip (this.GameOverSound);
-			}
-
-			ChangeState (PlayerAnimationState.Death);
-
-			var scriptCreateCar = GameCamera.GetComponent<CreateCar> ();
-			scriptCreateCar.enabled = false;
-			scriptCreateCar.StopCreateCar = true;
-
 
 			//DestroyObject (this.gameObject);	
 			//Time.timeScale=0;
