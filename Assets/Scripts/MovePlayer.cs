@@ -32,14 +32,14 @@ public class MovePlayer : MonoBehaviour {
 
 		if (Input.GetKey(KeyCode.LeftArrow)) {
 			this.gameObject.transform.Translate (new Vector2 (-1 * Time.deltaTime * this.Speed, 0));
-			if (local.x < 0) local.x = +1;
+			if (local.x < 0) local.x *= -1;
 			idle = false;
 			ChangeToMovement ();
 		} 
 
 		if (Input.GetKey(KeyCode.RightArrow)) {
 			this.gameObject.transform.Translate (new Vector2 (Time.deltaTime * this.Speed, 0));
-			if (local.x > 0) local.x = -1;
+			if (local.x > 0) local.x *= -1;
 			idle = false;
 			ChangeToMovement ();
 		} 
