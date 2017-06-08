@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveCar : MonoBehaviour {
 
-	public enum MoveCarDirection { Up, Down }
+	public enum MoveCarDirection { Up, Down, None }
 	public MoveCarDirection CarDirection = MoveCarDirection.Up;
 	public float Speed = 2.5f;
 
@@ -15,6 +15,10 @@ public class MoveCar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (this.CarDirection == MoveCarDirection.None) {
+			return;
+		}
+
 		if (this.CarDirection == MoveCarDirection.Down) {
 			this.gameObject.transform.Translate (new Vector2 (0, -1 * Time.deltaTime * this.Speed));
 		} else {

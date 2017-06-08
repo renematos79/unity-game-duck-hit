@@ -15,7 +15,7 @@ public class BorderColision : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other) {
-		print ("OnTriggerEnter2D");
+		//print ("OnTriggerEnter2D");
 		if (other.gameObject.CompareTag ("Car")) {
 			DestroyObject (other.gameObject);	
 		}
