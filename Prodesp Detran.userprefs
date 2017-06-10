@@ -1,8 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MovePlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MovePlayerDuck.cs">
     <Files>
-      <File FileName="Assets/Scripts/MovePlayer.cs" Line="42" Column="30" />
+      <File FileName="Assets/Scripts/MovePlayerDuck.cs" Line="195" Column="33" />
+      <File FileName="Assets/Scripts/MoveCar.cs" Line="19" Column="11" />
+      <File FileName="Assets/Scripts/AmbulanceSound.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AudioManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BorderColision.cs" Line="18" Column="5" />
+      <File FileName="Assets/Scripts/CarPointPosition.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CreateCar.cs" Line="32" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
