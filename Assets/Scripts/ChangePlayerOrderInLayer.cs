@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChangePlayerOrderInLayer : MonoBehaviour {
 
-	public int OrderInLayer = 7;
-	public int OrderOutLayer = 1;
+	public int ApplyOrderLayout = 0;
+	public int ApplyOrderLayouOut = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -19,19 +19,17 @@ public class ChangePlayerOrderInLayer : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Player")) {
-			var spriteRender = other.gameObject.GetComponent<SpriteRenderer> ();
-			if (spriteRender != null) {
-				spriteRender.sortingOrder = this.OrderInLayer;
-			}
+			var playerRender = other.gameObject.GetComponent<SpriteRenderer> ();
+			playerRender.sortingOrder = this.ApplyOrderLayout;
 		}
 	}
 
 	public void OnTriggerExit2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Player")) {
-			var spriteRender = other.gameObject.GetComponent<SpriteRenderer> ();
-			if (spriteRender != null) {
-				spriteRender.sortingOrder = this.OrderOutLayer;
-			}
+			var playerRender = other.gameObject.GetComponent<SpriteRenderer> ();
+			playerRender.sortingOrder = this.ApplyOrderLayouOut;	
 		}
 	}
+
+
 }

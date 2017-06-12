@@ -40,14 +40,14 @@ public class CreateNewCar : MonoBehaviour {
 			return;
 		}
 
-
 		var cpp = this.Coord.GetComponent<CarPointPosition>();
 		var car = Instantiate (CarType);
 		car.transform.position = cpp.transform.position;
+		car.gameObject.transform.parent = this.Coord.transform;
+
 		var carInstance = car.GetComponent<MoveCar> ();
 		carInstance.CarDirection = cpp.CarDirection;
 		carInstance.Speed = this.Speed;
 		carInstance.OldSpeed = this.Speed;
 	}
-
 }

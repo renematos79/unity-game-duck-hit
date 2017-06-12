@@ -6,11 +6,12 @@ public class BorderColision : MonoBehaviour {
 
 	public enum BorderColistionEnumAction
 	{
-		Destroy, Block, Nothing
+		Destroy, BlockVertical, BlockHorizontal, None
 	}
 
 	public string CollideWithTagName;
-	public BorderColistionEnumAction ColistionEnumAction;
+	public BorderColistionEnumAction ColistionEnumAction = BorderColistionEnumAction.None;
+	public float Offset = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -25,8 +26,27 @@ public class BorderColision : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D other) {
 		//print ("OnTriggerEnter2D");
 		if (other.gameObject.CompareTag (this.CollideWithTagName)) {
-			if (ColistionEnumAction == BorderColistionEnumAction.Destroy)
-				DestroyObject (other.gameObject);	
+			switch (ColistionEnumAction) {
+				case BorderColistionEnumAction.Destroy:
+				{
+					DestroyObject (other.gameObject);
+					return;
+				}
+				case BorderColistionEnumAction.BlockVertical:
+				{
+					var tagPosition = other.gameObject.transform.position;
+					tagPosition.y = this.gameObject.transform.position.y + Offset;
+					other.gameObject.transform.position = tagPosition;
+					return;
+				}
+				case BorderColistionEnumAction.BlockHorizontal:
+				{
+					var tagPosition = other.gameObject.transform.position;
+					tagPosition.x = this.gameObject.transform.position.x + Offset;
+					other.gameObject.transform.position = tagPosition;
+					return;
+				}
+			}
 		}
 	}
 }

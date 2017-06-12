@@ -19,11 +19,12 @@ public class CatchCoin : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Player")) {
+			var player = other.gameObject.GetComponent<MovePlayerMascote> ();
+			player.Coins++;
 			if (this.CatchCoinAudioClip != null) {
 				AudioManager.Instance.PlayClip (this.CatchCoinAudioClip);	
-				var total = int.Parse (Coins.text) + 1;
-				Coins.text = total.ToString ();
 			}
+			Coins.text = player.Coins.ToString ();
 			Destroy (this.gameObject);
 			//UpdateCoins(this.Coins+1);
 		}	

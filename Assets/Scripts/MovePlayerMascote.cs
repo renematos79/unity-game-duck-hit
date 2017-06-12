@@ -15,16 +15,13 @@ public class MovePlayerMascote : MonoBehaviour {
 	private Animator Anim;
 	public float Speed = 1.25f;
 	public AudioClip GameOverSound;
-	public float MinX = 0.0f;
-	public float MinY = 0.0f;
-	public float MaxX = 0.0f;
-	public float MaxY = 0.0f;
+	public int Coins = 0;
 
 	// Use this for initialization
 	void Start () {
 		Anim = this.gameObject.GetComponent<Animator> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (State == PlayerAnimationState.Death) {
@@ -32,10 +29,6 @@ public class MovePlayerMascote : MonoBehaviour {
 		}
 
 		#region .: up :.
-		if (Input.GetKeyUp(KeyCode.UpArrow)) {
-			ChangeState (PlayerAnimationState.Up);	
-		}
-
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			if (InState (PlayerAnimationState.Up) == false) {
 				ChangeState (PlayerAnimationState.Up);	
@@ -45,10 +38,6 @@ public class MovePlayerMascote : MonoBehaviour {
 		#endregion 
 
 		#region .: down :.
-		if (Input.GetKeyUp (KeyCode.DownArrow)) {
-			ChangeState (PlayerAnimationState.Down);	
-		} 
-
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			if (InState (PlayerAnimationState.Down) == false) {
 				ChangeState (PlayerAnimationState.Down);	
@@ -58,10 +47,6 @@ public class MovePlayerMascote : MonoBehaviour {
 		#endregion
 
 		#region .: left :.
-		if (Input.GetKeyUp (KeyCode.LeftArrow)) {
-			ChangeState (PlayerAnimationState.Left);	
-		} 
-
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 			if (InState (PlayerAnimationState.Left) == false) {
 				ChangeState (PlayerAnimationState.Left);	
@@ -71,10 +56,6 @@ public class MovePlayerMascote : MonoBehaviour {
 		#endregion
 
 		#region .: right :.
-		if (Input.GetKeyUp (KeyCode.RightArrow)) {
-			ChangeState (PlayerAnimationState.Right);	
-		} 
-
 		if (Input.GetKey (KeyCode.RightArrow)) {
 			if (InState (PlayerAnimationState.Right) == false) {
 				ChangeState (PlayerAnimationState.Right);	
@@ -97,25 +78,19 @@ public class MovePlayerMascote : MonoBehaviour {
 			case PlayerAnimationState.Up:
 			{
 				var delta = Time.deltaTime * this.Speed;
-				if (delta <= this.MaxY) {
-					this.gameObject.transform.Translate (new Vector2 (0, delta));
-				}
+				this.gameObject.transform.Translate (new Vector2 (0, delta));
 				break;
 			}
 			case PlayerAnimationState.Down:
 			{
 				var delta = Time.deltaTime * this.Speed * -1;
-				if (delta >= this.MinY) {
-					this.gameObject.transform.Translate (new Vector2 (0, delta));
-				}
+				this.gameObject.transform.Translate (new Vector2 (0, delta));
 				break;
 			}
 			case PlayerAnimationState.Left:
 			{
 				var delta = Time.deltaTime * this.Speed * -1;
-				if (delta >= this.MinX) {
-					this.gameObject.transform.Translate (new Vector2 (delta, 0));
-				}
+				this.gameObject.transform.Translate (new Vector2 (delta, 0));
 				var local = this.gameObject.transform.localScale;
 				if (local.x < 0) {
 					local.x *= -1;
@@ -126,9 +101,7 @@ public class MovePlayerMascote : MonoBehaviour {
 			case PlayerAnimationState.Right:
 			{
 				var delta = Time.deltaTime * this.Speed;
-				if (delta <= this.MaxX) {
-					this.gameObject.transform.Translate (new Vector2 (delta, 0));
-				}
+				this.gameObject.transform.Translate (new Vector2 (delta, 0));
 				var local = this.gameObject.transform.localScale;
 				if (local.x > 0) {
 					local.x *= -1;

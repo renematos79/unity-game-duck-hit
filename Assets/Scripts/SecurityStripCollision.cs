@@ -30,4 +30,16 @@ public class SecurityStripCollision : MonoBehaviour {
 			}
 		}
 	}
+
+	public void OnTriggerExit2D(Collider2D other) {
+		if (other.gameObject.tag == "Car" && Anim != null) {
+			var moveCar = other.gameObject.GetComponent<MoveCar> ();
+			if (Anim.GetBool ("Red") == false) {
+				moveCar.Speed = moveCar.OldSpeed;	
+			} else {
+				moveCar.OldSpeed = moveCar.Speed;	
+				moveCar.Speed = 0.0f;
+			}
+		}
+	}
 }

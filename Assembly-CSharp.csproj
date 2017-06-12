@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\CarPointPosition.cs" />
      <Compile Include="Assets\Scripts\CatchCoin.cs" />
      <Compile Include="Assets\Scripts\ChangePlayerOrderInLayer.cs" />
+     <Compile Include="Assets\Scripts\ChestOpen.cs" />
      <Compile Include="Assets\Scripts\CreateCar.cs" />
      <Compile Include="Assets\Scripts\CreateNewCar.cs" />
      <Compile Include="Assets\Scripts\MoveCar.cs" />
@@ -60,6 +61,8 @@
      <Compile Include="Assets\Scripts\MovePlayerMascote.cs" />
      <Compile Include="Assets\Scripts\SecurityStripCollision.cs" />
      <Compile Include="Assets\Scripts\SemaphoreControl.cs" />
+     <Compile Include="Assets\Scripts\StartNewGame.cs" />
+     <None Include="Assets\Libs\Platform Game Assets\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

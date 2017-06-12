@@ -196,8 +196,8 @@ public class MovePlayerDuck : MonoBehaviour {
 					}
 
 					// desliga a visao game
-					Camera.main.cullingMask = 1 << LayerMask.NameToLayer("Nothing");
-					Camera.main.cullingMask = 1 << LayerMask.NameToLayer("UI");
+					//Camera.main.cullingMask = 1 << LayerMask.NameToLayer("Nothing");
+					//Camera.main.cullingMask = 1 << LayerMask.NameToLayer("UI");
 				} );
 			}
 
