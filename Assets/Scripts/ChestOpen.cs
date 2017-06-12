@@ -35,7 +35,7 @@ public class ChestOpen : MonoBehaviour {
 				PlayerCoins.text = "0";
 				Coins.text = CoinsAmount.ToString ();
 				// verifica se houve fim de jogo
-				if (CoinsAmount >= 0){
+				if (CoinsAmount >= 5){
 
 					// desliga a musica principal
 					Camera.main.GetComponent<AudioSource> ().Stop ();
