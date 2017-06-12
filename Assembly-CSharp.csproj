@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\MovePlayerDuck.cs" />
      <Compile Include="Assets\Scripts\MovePlayerMascote.cs" />
+     <Compile Include="Assets\Scripts\RemoveObject.cs" />
      <Compile Include="Assets\Scripts\SecurityStripCollision.cs" />
      <Compile Include="Assets\Scripts\SemaphoreControl.cs" />
      <Compile Include="Assets\Scripts\StartNewGame.cs" />
