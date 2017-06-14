@@ -21,6 +21,10 @@ public class ChestOpen : MonoBehaviour {
 		
 	}
 
+	public void PlaySound(){
+		AudioManager.Instance.PlayClip (this.CatchCoinAudioClip);
+	}
+
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Player")) {
 			var animator = this.gameObject.GetComponent<Animator> ();
@@ -28,10 +32,12 @@ public class ChestOpen : MonoBehaviour {
 			var player = other.gameObject.GetComponent<MovePlayerMascote> ();
 			if (player.Coins > 0) {
 				CoinsAmount += player.Coins;
-				player.Coins = 0;
 				if (this.CatchCoinAudioClip != null) {
-					AudioManager.Instance.PlayClip (this.CatchCoinAudioClip);	
+					for (int i = 1; i <= player.Coins; i++) {
+						Invoke ("PlaySound", i*0.2f);
+					}
 				}
+				player.Coins = 0;
 				PlayerCoins.text = "0";
 				Coins.text = CoinsAmount.ToString ();
 				// verifica se houve fim de jogo
