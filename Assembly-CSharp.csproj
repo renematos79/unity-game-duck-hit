@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\SecurityStripCollision.cs" />
      <Compile Include="Assets\Scripts\SemaphoreControl.cs" />
      <Compile Include="Assets\Scripts\StartNewGame.cs" />
+     <Compile Include="Assets\Scripts\WarnHornCar.cs" />
      <None Include="Assets\Libs\Platform Game Assets\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
