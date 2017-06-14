@@ -12,33 +12,79 @@ public class MovePlayer : MonoBehaviour {
 	void Start () {
 		Anim = this.gameObject.GetComponent<Animator> ();
 	}
-	
+
+	KeyCode GetSelectedKey(){
+		if (Input.GetKey (KeyCode.UpArrow)) {
+			return KeyCode.UpArrow;
+		}
+
+		if (Input.GetKey (KeyCode.DownArrow)) {
+			return KeyCode.DownArrow;
+		}
+
+		if (Input.GetKey (KeyCode.LeftArrow)) {
+			return KeyCode.LeftArrow;
+		}
+
+		if (Input.GetKey (KeyCode.RightArrow)) {
+			return KeyCode.RightArrow;
+		}
+
+		return KeyCode.O;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		var local = this.gameObject.transform.localScale;
 		var idle = true;
+		var keycode = GetSelectedKey ();
 
-		if (Input.GetKey(KeyCode.UpArrow)) {
-			this.gameObject.transform.Translate (new Vector2 (0, Time.deltaTime * this.Speed));
+
+		if (keycode == KeyCode.UpArrow) {
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Keyboard) {
+				this.gameObject.transform.Translate (new Vector2 (0, Time.deltaTime * this.Speed));	
+			}
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Accelerometer) {
+				this.gameObject.transform.Translate (new Vector2 (0, Input.acceleration.x * Time.deltaTime * this.Speed));	
+			}
+
 			idle = false;
 			ChangeToMovement ();
 		} 
 
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			this.gameObject.transform.Translate (new Vector2 (0, -1 * Time.deltaTime * this.Speed));
+		if (keycode == KeyCode.DownArrow) {
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Keyboard) {
+				this.gameObject.transform.Translate (new Vector2 (0, -1 * Time.deltaTime * this.Speed));
+			}
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Accelerometer) {
+				this.gameObject.transform.Translate (new Vector2 (0, Input.acceleration.x * Time.deltaTime * this.Speed));
+			}
+
 			idle = false;
 			ChangeToMovement ();
 		} 
 
-		if (Input.GetKey(KeyCode.LeftArrow)) {
-			this.gameObject.transform.Translate (new Vector2 (-1 * Time.deltaTime * this.Speed, 0));
+		if (keycode == KeyCode.LeftArrow) {
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Keyboard) {
+				this.gameObject.transform.Translate (new Vector2 (-1 * Time.deltaTime * this.Speed, 0));
+			}
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Accelerometer) {
+				this.gameObject.transform.Translate (new Vector2 (Input.acceleration.y * Time.deltaTime * this.Speed, 0));
+			}
+
 			if (local.x < 0) local.x *= -1;
 			idle = false;
 			ChangeToMovement ();
 		} 
 
-		if (Input.GetKey(KeyCode.RightArrow)) {
-			this.gameObject.transform.Translate (new Vector2 (Time.deltaTime * this.Speed, 0));
+		if (keycode == KeyCode.RightArrow) {
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Keyboard) {
+				this.gameObject.transform.Translate (new Vector2 (Time.deltaTime * this.Speed, 0));
+			}
+			if (ButtomFunctions.KeyboardType == ButtomFunctions.KeyboardOptions.Accelerometer) {
+				this.gameObject.transform.Translate (new Vector2 (Input.acceleration.y * Time.deltaTime * this.Speed, 0));
+			}
+
 			if (local.x > 0) local.x *= -1;
 			idle = false;
 			ChangeToMovement ();

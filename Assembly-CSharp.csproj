@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\AmbulanceSound.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BorderColision.cs" />
+     <Compile Include="Assets\Scripts\ButtomFunctions.cs" />
      <Compile Include="Assets\Scripts\CarPointPosition.cs" />
      <Compile Include="Assets\Scripts\CatchCoin.cs" />
      <Compile Include="Assets\Scripts\ChangePlayerOrderInLayer.cs" />
