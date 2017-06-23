@@ -16,8 +16,12 @@ public class ButtomFunctions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.Sound.isOn = ButtomFunctions.SoundOn;
-		this.Keyboard.value = ButtomFunctions.KeyboardValue;
+		if (this.Sound != null) {
+			this.Sound.isOn = ButtomFunctions.SoundOn;
+		}
+		if (this.Keyboard != null) {
+			this.Keyboard.value = ButtomFunctions.KeyboardValue;	
+		}
 	}
 	
 	// Update is called once per frame
